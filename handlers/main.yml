@@ -1,0 +1,7 @@
+---
+# handlers file for roles/nullmailer
+- name: restart nullmailer
+  become: true
+  service:
+    name: nullmailer
+    state: restarted

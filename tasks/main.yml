@@ -1,0 +1,31 @@
+---
+# tasks file for roles/nullmailer
+- name: Install packages
+  become: true
+  apt:
+    name: nullmailer
+    state: installed
+  
+- name: Configure nullmailer
+  become: true
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/nullmailer/{{ item }}"
+    mode: 0440
+    owner: mail
+    group: root
+  with_items:
+    - adminaddr
+    - defaultdomain
+    - defaulthost
+    - me
+    - pausetime
+    - remotes
+  notify: restart nullmailer
+
+- name: Start nullmailer
+  become: true
+  service:
+    name: nullmailer
+    state: started
+    enabled: true

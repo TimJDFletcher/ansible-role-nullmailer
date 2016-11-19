@@ -1,0 +1,8 @@
+---
+# defaults file for roles/nullmailer
+nullmailer_adminaddr:
+nullmailer_defaultdomain:
+nullmailer_defaulthost:
+nullmailer_me: 
+nullmailer_pausetime: 60
+nullmailer_remotes: 
